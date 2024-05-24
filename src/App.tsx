@@ -119,12 +119,9 @@ function App() {
             ...tasks,
             [todolistId]: {
                 ...tasks[todolistId],
-                filter: tasks[todolistId].filter.map(
-                    el => el.id
-                )
+                filter: value
             }
         })
-        // setTodolists(todolists.map(el => el.id === todolistId ? {...el, filter: value} : el))
     }
 
     return (
