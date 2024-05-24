@@ -101,13 +101,29 @@ function App() {
     }
 
     function changeStatus(todolistId: string, taskId: string, newIsDone: boolean) {
-        // setTasks({
-        //     ...tasks,
-        //     [todolistId]: tasks[todolistId].map(el => el.id === taskId ? {...el, isDone: newIsDone} : el)
-        // })
+        setTasks({
+            ...tasks,
+            [todolistId]: {
+                ...tasks[todolistId],
+                data: tasks[todolistId].data.map(
+                    el => el.id === taskId
+                        ? {...el, isDone: newIsDone}
+                        : el
+                )
+            }
+        })
     }
 
     function changeFilter(todolistId: string, value: FilterValuesType) {
+        setTasks({
+            ...tasks,
+            [todolistId]: {
+                ...tasks[todolistId],
+                filter: tasks[todolistId].filter.map(
+                    el => el.id
+                )
+            }
+        })
         // setTodolists(todolists.map(el => el.id === todolistId ? {...el, filter: value} : el))
     }
 
