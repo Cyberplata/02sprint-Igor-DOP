@@ -23,7 +23,8 @@ export const Route = ({
                           removeFTRoute
                       }: RouteProps) => {
     const handleRemoveFTRoute = () => {
-        alert('Почини меня, чтобы я могла удалять рейс. Сделай это через универсальную кнопку.')
+        // alert('Почини меня, чтобы я могла удалять рейс. Сделай это через универсальную кнопку.')
+        removeFTRoute(flightTableID, route.id)
     };
 
     const handleUpdateRouteFrom = () => {
