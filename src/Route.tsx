@@ -27,17 +27,17 @@ export const Route = ({
         removeFTRoute(flightTableID, route.id)
     };
 
-    const handleUpdateRouteFrom = () => {
-        updateFTRoutesFrom(flightTableID, route.id, route.from)
+    const handleUpdateRouteFrom = (newFrom: string) => {
+        updateFTRoutesFrom(flightTableID, route.id, newFrom)
     };
 
-    const handleUpdateRouteTo = () => {
-        updateFTRoutesTo(flightTableID, route.id, route.to);
+    const handleUpdateRouteTo = (newTo: string) => {
+        updateFTRoutesTo(flightTableID, route.id, newTo);
     }
 
-    const handleToggleFTIsBooked = () => {
+    const handleToggleFTIsBooked = (isDone:boolean) => {
         // alert('Во мне куча ошибок!')
-        toggleFTIsBooked(flightTableID, route.id, route.isBooked)
+        toggleFTIsBooked(flightTableID, route.id, isDone)
     }
 
     return (
@@ -46,16 +46,16 @@ export const Route = ({
                 <tbody>
                 <tr className={styles.ftRow}>
                     <td className={styles.ftCell}>
-                        <button onClick={handleRemoveFTRoute}>X</button>
+                        <Button onClick={handleRemoveFTRoute} title={'X'}/>
                     </td>
                     <td className={`${styles.ftCell} ${styles.pointerCursor}`}>
-                        <UpdateItem oldTitle={route.from} callBack={() => handleUpdateRouteFrom}/>
+                        <UpdateItem oldTitle={route.from} callBack={handleUpdateRouteFrom}/>
                     </td>
                     <td className={`${styles.ftCell} ${styles.pointerCursor}`}>
                         ➔
                     </td>
                     <td className={`${styles.ftCell} ${styles.pointerCursor}`}>
-                        <UpdateItem oldTitle={route.to} callBack={() => handleUpdateRouteTo}/>
+                        <UpdateItem oldTitle={route.to} callBack={handleUpdateRouteTo}/>
                     </td>
                     <td className={styles.checkboxContainer}>
                         <label>

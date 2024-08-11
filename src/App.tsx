@@ -43,6 +43,8 @@ function App() {
         }
     ]);
 
+    // console.log(flightTables)
+
     const addNewFTRoute = (flightTableID: string, from: string, to: string) => {
         const newRoute = {id: v1(), from, to, isBooked: true};
         setFlightTables(prevState =>
@@ -70,7 +72,7 @@ function App() {
             ft.flightTableID === flightTableID ? {
                     ...ft,
                     routes: ft.routes.map(route =>
-                        route.id === routeID ? {...route, isBooked: !isBooked} : route
+                        route.id === routeID ? {...route, isBooked} : route
                     )
                 }
                 : ft
@@ -96,6 +98,7 @@ function App() {
         setFlightTables(flightTables.map(ft =>
             ft.flightTableID === flightTableID ? {...ft, date: newDate} : ft
         ));
+        console.log(newDate)
     };
 
     const updateFTRoutesFrom = (flightTableID: string, routeID: string, newFrom: string) => {
@@ -107,6 +110,7 @@ function App() {
                 )
             } : ft
         ));
+        console.log(newFrom)
     };
 
     const updateFTRoutesTo = (flightTableID: string, routeID: string, newTo: string) => {
@@ -118,6 +122,7 @@ function App() {
                 )
             } : ft
         ));
+        console.log(newTo)
     };
 
     return (
